@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teal is god</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Varela Round', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(-45deg, #008080, #00FFFF);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+            margin-top: -10px;
+            background: linear-gradient(90deg, #FFB3BA, #FFDFBA, #FFFFBA, #BAFFC9, #BAE1FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorChange 10s linear infinite;
+        }
+
+        @keyframes colorChange {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        p {
+            color: white;
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .youtube-icon {
+            color: white;
+            background-color: #FF0000; /* Red for YouTube */
+        }
+
+        .youtube-icon:hover {
+            background-color: #cc0000; /* Darker red on hover */
+        }
+
+        .github-icon {
+            color: white;
+            background-color: #333333; /* Greyish black for GitHub */
+        }
+
+        .github-icon:hover {
+            background-color: #1a1a1a; /* Darker grey on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Teal</h1>
+        <h2>I'm Teal, you can call me Chihye</h2>
+        <p>- Programmer</p>
+        <p>- Content Creator</p>
+
+        <div class="social-icons">
+            <a href="https://www.youtube.com/your-channel" class="youtube-icon" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://github.com/your-profile" class="github-icon" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+</body>
+</html>

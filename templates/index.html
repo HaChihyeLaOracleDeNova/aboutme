@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teal is god</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Varela Round', sans-serif;
+            overflow-y: auto;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #008080, #00FFFF);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            z-index: 2; /* Set a higher z-index for content */
+            position: relative;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            color: aqua;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
+            margin-top: -10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            color: white;
+            font-size: 1.5rem;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li::before {
+            content: '✦';
+            color: white;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        /* YouTube Icon */
+        .youtube-icon {
+            color: white;
+            background-color: #FF0000; /* Red for YouTube */
+        }
+
+        .youtube-icon:hover {
+            background-color: #cc0000; /* Darker red on hover */
+        }
+
+        /* GitHub Icon */
+        .github-icon {
+            color: white;
+            background-color: #333333; /* Greyish black for GitHub */
+        }
+
+        .github-icon:hover {
+            background-color: #1a1a1a; /* Darker grey on hover */
+        }
+
+        .dropdown {
+            width: 100%;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .dropdown-button {
+            width: 100%;
+            background-color: white;
+            color: black;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .dropdown-content {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Centering the Info Section */
+        .info-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Dynamic Clock Section */
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        /* Globe and Text Section */
+        .globe-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        h2, ul, .info-container, .social-icons, .dropdown {
+            text-align: center;
+        }
+
+        .clock-container span, .globe-container span {
+            background: linear-gradient(90deg, #FFB3BA, #FFDFBA, #FFFFBA, #BAFFC9, #BAE1FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Position the canvas behind the content */
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Set a lower z-index for the canvas */
+        }
+
+        .custom-button {
+    background-color: #333333; /* Greyish black */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px 0; /* Adds space above and below the button */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+        .custom-button:hover {
+            background-color: #1a1a1a; /* Darker grey on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Teal</h1>
+        <h2>I'm Teal and also Alice. I create useless things</h2>
+        <ul>
+            <li>He/him but does this really matter?</li>
+        </ul>
+
+        <!-- Centered Dynamic Clock and Globe Section -->
+        <div class="info-container">
+            <!-- Dynamic Clock Section -->
+            <div class="clock-container">
+                <span id="dynamic-time"></span>
+            </div>
+
+            <!-- Globe and Text Section -->
+            <div class="globe-container">
+                <span>America</span>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.youtube.com/your-channel" class="youtube-icon" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://github.com/your-profile" class="github-icon" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+
+<button class="custom-button">My Projects</button>
+
+        <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDropdown(this)">Favorite Games</button>
+            <div class="dropdown-content">
+                <p>Genshin Impact</p>
+                <p>Azur Lane</p>
+                <p>NIKKE</p>
+                <p>Honkai Impact</p>
+                <p>Wuthering Waves</p>
+                <p>Tower of Fantasy</p>
+                <p>Beat Saber</p>
+                <p>Project Sekai</p>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDropdown(this)">Recommended Manga/Manhwa/Manhua</button>
+            <div class="dropdown-content">
+                <p>I became the villain's mother (Manhwa)</p>
+                <p>Can we become a family (Manhwa)</p>
+                <p>A transmigrator's privilege (Manhwa)</p>
+            </div>
+        </div>
+
+    <div class="dropdown">
+            <button class="dropdown-button" onclick="toggleDropdown(this)">Things in development</button>
+            <div class="dropdown-content">
+                <p>Shui | The AI Discord Bot</p>
+                <p>Teal's Character Logger | Website to save and reuse characters you use with AIs</p>
+                <p>???</p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <canvas id="particleCanvas"></canvas>
+    <script>
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Handle resize
+    window.addEventListener('resize', function(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+        constructor(x, y, size, speedX, speedY) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.speedX = speedX;
+            this.speedY = speedY;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if(this.size > 0.2) this.size -= 0.1;
+        }
+
+        draw() {
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+        }
+    }
+
+    function createParticles() {
+        const particleCount = 100;
+        for (let i = 0; i < particleCount; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const size = Math.random() * 5 + 1;
+            const speedX = Math.random() * 3 - 1.5;
+            const speedY = Math.random() * 3 - 1.5;
+            particlesArray.push(new Particle(x, y, size, speedX, speedY));
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+
+            if (particlesArray[i].size <= 0.2) {
+                particlesArray.splice(i, 1);
+                i--;
+            }
+        }
+
+        createParticles();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    function toggleDropdown(button) {
+        const dropdown = button.parentElement;
+        dropdown.classList.toggle('active');
+    }
+
+
+
+    function updateTime() {
+    const now = new Date();
+    const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+    const timeString = now.toLocaleTimeString('en-US', options);
+    const dayString = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const dynamicTime = `It's ${timeString} on a ${dayString} in my timezone`;
+
+    document.getElementById('dynamic-time').textContent = dynamicTime;
+}
+
+updateTime(); // Initial call
+setInterval(updateTime, 60000); // Update every minute
+
+
+    </script>
+</body>
+</html>
